@@ -1,0 +1,65 @@
+
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="stomaForm" (ngSubmit)="updateMedic()" novalidate>
+        <div class="form-group row ">
+          <label class="col-md-3 col-form-label">Nume medic </label>
+          <div class="col-md-8">
+              <input type="text" class="form-control   "
+            formControlName="NumeMedic"
+            #NumeMedic />
+                </div>
+        </div>
+        <div *ngIf="stomaForm.controls['NumeMedic'].invalid && (stomaForm.controls['NumeMedic'].dirty || stomaForm.controls['NumeMedic'].touched)" class="alert alert-danger">
+          <div *ngIf="stomaForm.controls['NumeMedic'].errors.required">
+          Numele medicului este necesar.
+          </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-md-3 col-form-label">Prenume medic   </label>
+        <div class="col-md-8" >
+          <input type="text" class="form-control"
+         formControlName="PrenumeMedic"
+         #PrenumeMedic />
+        </div>
+     </div>
+     <div *ngIf="stomaForm.controls['PrenumeMedic'].invalid && (stomaForm.controls['PrenumeMedic'].dirty || stomaForm.controls['PrenumeMedic'].touched)" class="alert alert-danger">
+       <div *ngIf="stomaForm.controls['PrenumeMedic'].errors.required">
+         Prenumele medicului este necesar.
+       </div>
+     </div>
+  <div class="form-group row ">
+           <label class="col-md-3 col-form-label">Telefon  </label>
+           <div class="col-md-8">
+               <input type="text" class="form-control   "
+             formControlName="Telefon"
+             #Telefon />
+                 </div>
+         </div>
+         <div *ngIf="stomaForm.controls['Telefon'].invalid && (stomaForm.controls['Telefon'].dirty || stomaForm.controls['Telefon'].touched)" class="alert alert-warning">
+           <div *ngIf="stomaForm.controls['Telefon'].errors.required">
+              Telefonul    lipsește.
+           </div>
+         </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label">Observații  </label>
+          <div class="col-md-8">
+                <textarea class="form-control" rows = 2 cols = "5"
+                formControlName="Observatii"
+                #Observatii></textarea>
+          </div>
+        </div>
+        <div *ngIf="stomaForm.controls['Observatii'].invalid && (stomaForm.controls['Observatii'].dirty || stomaForm.controls['Observatii'].touched)" class="alert alert-light  ">
+          <div *ngIf="stomaForm.controls['Observatii'].errors.required">
+          Nu sunt specificate observații.
+          </div>
+        </div>
+        <div class="form-group">
+          <button (click) = "updateMedic(NumeMedic.value, PrenumeMedic.value, Telefon.value, Observatii.value )"
+           type="submit" class="btn btn-primary"   [disabled]="stomaForm.invalid" >
+            Modifică medic
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

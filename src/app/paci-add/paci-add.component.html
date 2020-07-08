@@ -1,0 +1,131 @@
+
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="paciForm" novalidate>
+        <div class="form-group row ">
+          <label class="col-md-3 col-form-label">Număr fișă </label>
+          <div class="col-md-8">
+              <input type="text" class="form-control   "
+            formControlName="NumarFisa"
+            #NumarFisa />
+                </div>
+        </div>
+        <div *ngIf="paciForm.controls['NumarFisa'].invalid && (paciForm.controls['NumarFisa'].dirty || paciForm.controls['NumarFisa'].touched)" class="alert alert-danger">
+          <div *ngIf="paciForm.controls['NumarFisa'].errors.required">
+            Numărul fișei  este necesar.
+          </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-md-3 col-form-label">Medic  </label>
+        <div class="col-md-8" >
+          <input type="text" class="form-control"
+         formControlName="Medic"
+         #Medic />
+        </div>
+     </div>
+     <div *ngIf="paciForm.controls['Medic'].invalid && (paciForm.controls['Medic'].dirty || paciForm.controls['Medic'].touched)" class="alert alert-danger">
+       <div *ngIf="paciForm.controls['Medic'].errors.required">
+         Medicul este necesar.
+       </div>
+     </div>
+     <div class="form-group row ">
+    <label class="col-md-3 col-form-label">Nume pacient  </label>
+    <div class="col-md-8">
+        <input type="text" class="form-control   "
+      formControlName="NumePacient"
+      #NumePacient />
+          </div>
+  </div>
+  <div *ngIf="paciForm.controls['NumePacient'].invalid && (paciForm.controls['NumePacient'].dirty || paciForm.controls['NumePacient'].touched)" class="alert alert-danger">
+    <div *ngIf="paciForm.controls['NumePacient'].errors.required">
+      Numele pacientului   este necesar.
+    </div>
+  </div>
+  <div class="form-group row ">
+    <label class="col-md-3 col-form-label">Prenume pacient  </label>
+    <div class="col-md-8">
+        <input type="text" class="form-control   "
+      formControlName="PrenumePacient"
+      #PrenumePacient />
+          </div>
+  </div>
+  <div *ngIf="paciForm.controls['PrenumePacient'].invalid && (paciForm.controls['PrenumePacient'].dirty || paciForm.controls['PrenumePacient'].touched)" class="alert alert-danger">
+    <div *ngIf="paciForm.controls['PrenumePacient'].errors.required">
+      Prenumele pacientului   este necesar.
+    </div>
+  </div>
+  <div class="form-group row ">
+    <label class="col-md-3 col-form-label">Serie CI  </label>
+    <div class="col-md-8">
+        <input type="text" class="form-control   "
+      formControlName="SerieCI"
+      #SerieCI />
+          </div>
+  </div>
+  <div *ngIf="paciForm.controls['SerieCI'].invalid && (paciForm.controls['SerieCI'].dirty || paciForm.controls['SerieCI'].touched)" class="alert alert-danger">
+    <div *ngIf="paciForm.controls['SerieCI'].errors.required">
+      Seria CI    este necesară.
+    </div>
+  </div>
+  <div class="form-group row ">
+    <label class="col-md-3 col-form-label">Număr CI   </label>
+    <div class="col-md-8">
+        <input type="text" class="form-control   "
+      formControlName="NumarCI"
+      #NumarCI />
+          </div>
+  </div>
+  <div *ngIf="paciForm.controls['NumarCI'].invalid && (paciForm.controls['NumarCI'].dirty || paciForm.controls['NumarCI'].touched)" class="alert alert-danger">
+    <div *ngIf="paciForm.controls['NumarCI'].errors.required">
+      Numărul  CI  este necesar.
+    </div>
+  </div>
+  <div class="form-group row ">
+    <label class="col-md-3 col-form-label">CNP  </label>
+    <div class="col-md-8">
+        <input type="text" class="form-control   "
+      formControlName="CNP"
+      #CNP />
+          </div>
+  </div>
+  <div *ngIf="paciForm.controls['CNP'].invalid && (paciForm.controls['CNP'].dirty || paciForm.controls['CNP'].touched)" class="alert alert-danger">
+    <div *ngIf="paciForm.controls['CNP'].errors.required">
+      CNP   este necesar și trebuie să aibă 13  caractere.
+    </div>
+  </div>
+  <div class="form-group row ">
+           <label class="col-md-3 col-form-label">Telefon  </label>
+           <div class="col-md-8">
+               <input type="text" class="form-control   "
+             formControlName="Telefon"
+             #Telefon />
+                 </div>
+         </div>
+         <div *ngIf="paciForm.controls['Telefon'].invalid && (paciForm.controls['Telefon'].dirty || paciForm.controls['Telefon'].touched)" class="alert alert-warning">
+           <div *ngIf="paciForm.controls['Telefon'].errors.required">
+              Telefonul    lipsește.
+           </div>
+         </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label">Observații  </label>
+          <div class="col-md-8">
+                <textarea class="form-control" rows = 2 cols = "5"
+                formControlName="Observatii"
+                #Observatii></textarea>
+          </div>
+        </div>
+        <div *ngIf="paciForm.controls['Observatii'].invalid && (paciForm.controls['Observatii'].dirty || paciForm.controls['Observatii'].touched)" class="alert alert-light  ">
+          <div *ngIf="paciForm.controls['Observatii'].errors.required">
+          Nu sunt specificate observații.
+          </div>
+        </div>
+        <div class="form-group">
+          <button (click) = "addPacient(NumarFisa.value, Medic .value, NumePacient.value, PrenumePacient.value, SerieCI.value, NumarCI.value,
+          CNP.value, Telefon.value, Observatii.value)" type="submit" class="btn btn-primary"
+          [disabled]="paciForm.pristine || paciForm.invalid" >
+          Adaugă pacient
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,23 @@
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <td style="text-align: center"> <h6>Nume  medic </h6>  </td>
+        <td style="text-align: center"><h6>Prenume medic</h6>   </td>
+        <td style="text-align: center;"><h6>Telefon</h6>  </td>
+        <td style="text-align: center;"><h6>Observații</h6>  </td>
+        <td colspan="2" style="text-align: center;"><h6> Acțiuni  </h6>   </td>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let medic of medici">
+            <td>{{ medic.NumeMedic }}</td>
+            <td>{{ medic.PrenumeMedic }}</td>
+            <td>{{ medic.Telefon }}</td>
+            <td>{{ medic.Observatii }}</td>
+            <td><a [routerLink]="['modifica', medic._id]" class="btn btn-primary">Modifică</a></td>
+            <td><a (click) = "deleteMedic(medic._id)" class="btn btn-danger">Șterge </a>
+        </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,68 @@
+
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="medicForm" novalidate>
+
+     <div class="form-group row ">
+    <label class="col-md-3 col-form-label">Nume medic  </label>
+    <div class="col-md-8">
+        <input type="text" class="form-control   "
+      formControlName="NumeMedic"
+      #NumeMedic />
+          </div>
+  </div>
+  <div *ngIf="medicForm.controls['NumeMedic'].invalid && (medicForm.controls['NumeMedic'].dirty || medicForm.controls['NumeMedic'].touched)" class="alert alert-danger">
+    <div *ngIf="medicForm.controls['NumeMedic'].errors.required">
+      Numele  medicului   este necesar.
+    </div>
+  </div>
+  <div class="form-group row ">
+    <label class="col-md-3 col-form-label">Prenume medic  </label>
+    <div class="col-md-8">
+        <input type="text" class="form-control   "
+      formControlName="PrenumeMedic"
+      #PrenumeMedic />
+          </div>
+  </div>
+  <div *ngIf="medicForm.controls['PrenumeMedic'].invalid && (medicForm.controls['PrenumeMedic'].dirty || medicForm.controls['PrenumeMedic'].touched)" class="alert alert-danger">
+    <div *ngIf="medicForm.controls['PrenumeMedic'].errors.required">
+      Prenumele medicului   este necesar.
+    </div>
+  </div>
+
+  <div class="form-group row ">
+           <label class="col-md-3 col-form-label">Telefon  </label>
+           <div class="col-md-8">
+               <input type="text" class="form-control   "
+             formControlName="Telefon"
+             #Telefon />
+                 </div>
+         </div>
+         <div *ngIf="medicForm.controls['Telefon'].invalid && (medicForm.controls['Telefon'].dirty || medicForm.controls['Telefon'].touched)" class="alert alert-warning">
+           <div *ngIf="medicForm.controls['Telefon'].errors.required">
+              Telefonul    lipsește.
+           </div>
+         </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label">Observații  </label>
+          <div class="col-md-8">
+                <textarea class="form-control" rows = 2 cols = "5"
+                formControlName="Observatii"
+                #Observatii></textarea>
+          </div>
+        </div>
+        <div *ngIf="medicForm.controls['Observatii'].invalid && (medicForm.controls['Observatii'].dirty || medicForm.controls['Observatii'].touched)" class="alert alert-light  ">
+          <div *ngIf="medicForm.controls['Observatii'].errors.required">
+          Nu sunt specificate observații.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button (click) = "addMedic(NumeMedic.value, PrenumeMedic.value, Telefon.value, Observatii.value)" type="submit" class="btn btn-primary"
+          [disabled]="medicForm.pristine || medicForm.invalid" >
+          Adaugă medic
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

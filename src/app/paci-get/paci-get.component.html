@@ -1,0 +1,33 @@
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <td style="text-align: center;"><h6>Număr fișă</h6>  </td>
+          <td style="text-align: center;"><h6>Medic</h6>  </td>
+        <td style="text-align: center"> <h6>Nume  pacient </h6>  </td>
+        <td style="text-align: center"><h6>Prenume pacient</h6>   </td>
+          <td style="text-align: center;"><h6>Serie CI</h6></td>
+            <td style="text-align: center;"><h6>Număr CI</h6></td>
+              <td style="text-align: center;"><h6>CNP</h6></td>
+        <td style="text-align: center;"><h6>Telefon</h6></td>
+        <td style="text-align: center;"><h6>Observații</h6>  </td>
+        <td colspan="2" style="text-align: center;"><h6> Acțiuni  </h6>   </td>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let pacient of pacienti">
+            <td>{{ pacient.NumarFisa }}</td>
+              <td>{{ pacient.Medic }}</td>
+            <td>{{ pacient.NumePacient }}</td>
+            <td>{{ pacient.PrenumePacient }}</td>
+                <td>{{ pacient.SerieCI }}</td>
+                    <td>{{ pacient.NumarCI }}</td>
+                        <td>{{ pacient.CNP }}</td>
+            <td>{{ pacient.Telefon }}</td>
+            <td>{{ pacient.Observatii }}</td>
+            <td><a [routerLink]="['modifica', pacient._id]" class="btn btn-primary">Modifică</a></td>
+            <td><a (click) = "deletePacient(pacient._id)" class="btn btn-danger">Șterge </a>
+        </tr>
+    </tbody>
+  </table>
